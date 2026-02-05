@@ -451,7 +451,7 @@ class AutoLogin:
 
         #self.log(f"等待验证码（{TWO_FACTOR_WAIT}秒）...", "WARN")
         #code = self.tg.wait_code(timeout=TWO_FACTOR_WAIT)
-        code = pyotp.TOTP(self.totp).now()
+        code = pyotp.TOTP(os.environ.get('GH_TOTP')).now()
         self.log(f"2FA Code: {code}" , "INFO")
 
         """if not code:
